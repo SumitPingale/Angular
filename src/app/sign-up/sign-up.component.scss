@@ -1,0 +1,17 @@
+.sign-up-component {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: 95rem;
+
+    .signUp-form {
+      border: 0.2rem solid blueviolet;
+      padding: 3rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+}

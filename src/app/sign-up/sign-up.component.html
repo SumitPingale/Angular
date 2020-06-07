@@ -1,0 +1,164 @@
+<div class="sign-up-component">
+  <div class="container">
+    <form
+      [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit(signUpForm)"
+      class="signUp-form col-sm-5 col-md-6 col-lg-8 col-xl-8"
+    >
+      <h3 class="text-center">Sign Up</h3>
+
+      <div class="first-section col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            formControlName="firstName"
+            type="firstName"
+            class="form-control"
+            id="firstName"
+            placeholder="Enter First Name"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.firstName.dirty ||
+              signUpForm.controls.firstName.touched
+            "
+          >
+            <div *ngIf="signUpForm.controls.firstName.hasError('required')">
+              first is required!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            formControlName="lastName"
+            type="lastName"
+            class="form-control"
+            id="lastName"
+            placeholder="lastName"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.lastName.dirty ||
+              signUpForm.controls.lastName.touched
+            "
+          >
+            <div *ngIf="signUpForm.controls.lastName.hasError('required')">
+              Last Name is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            formControlName="address"
+            type="address"
+            class="form-control"
+            id="address"
+            placeholder="Enter full Address"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.address.dirty ||
+              signUpForm.controls.address.touched
+            "
+          >
+            <div *ngIf="signUpForm.controls.address.hasError('required')">
+              first is required!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="second-section col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.email.dirty ||
+              signUpForm.controls.email.touched
+            "
+          >
+            <div *ngIf="signUpForm.controls.email.hasError('pattern')">
+              Oops, wrong pattern buddy!
+            </div>
+            <div *ngIf="signUpForm.controls.email.hasError('required')">
+              email is required!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.password.dirty ||
+              signUpForm.controls.password.touched
+            "
+          >
+            <div *ngIf="signUpForm.controls.password.hasError('minlength')">
+              Oops,minimum 5 digit required buddy!
+            </div>
+            <div *ngIf="signUpForm.controls.password.hasError('required')">
+              Password is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">confirmPassword</label>
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="confirm your Password"
+          />
+          <div
+            *ngIf="
+              signUpForm.controls.confirmPassword.dirty ||
+              signUpForm.controls.confirmPassword.touched
+            "
+          >
+            <div
+              *ngIf="
+                signUpForm.controls.confirmPassword.value !=
+                signUpForm.controls.password.value
+              "
+            >
+              Password does not match!
+            </div>
+            <div
+              *ngIf="signUpForm.controls.confirmPassword.hasError('required')"
+            >
+              confirmPassword is required!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <button
+          [disabled]="signUpForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
