@@ -1,0 +1,72 @@
+<div class="login-component">
+  <div class="container">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit(loginForm)"
+      class="login-form col-sm-5 col-md-5 col-lg-5 col-xl-5"
+    >
+      <h3 class="text-center">Login</h3>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+        <div
+          *ngIf="
+            loginForm.controls.email.dirty || loginForm.controls.email.touched
+          "
+        >
+          <div *ngIf="loginForm.controls.email.hasError('pattern')">
+            Oops, wrong pattern buddy!
+          </div>
+          <div *ngIf="loginForm.controls.email.hasError('required')">
+            email is required!
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+        />
+        <div
+          *ngIf="
+            loginForm.controls.password.dirty ||
+            loginForm.controls.password.touched
+          "
+        >
+          <div *ngIf="loginForm.controls.password.hasError('minlength')">
+            Oops,minimum 5 digit required buddy!
+          </div>
+          <div *ngIf="loginForm.controls.password.hasError('required')">
+            Password is required!
+          </div>
+        </div>
+      </div>
+      <button
+        [disabled]="loginForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <p>
+        New User ? Please Sing Up here .<a [routerLink]="['/sign-up']"
+          >SignUp</a
+        >
+      </p>
+    </form>
+  </div>
+</div>
